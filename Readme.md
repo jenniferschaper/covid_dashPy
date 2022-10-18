@@ -46,10 +46,16 @@ These are listed in requirements.txt
 
 These applications are single-page apps rendered in React on top of Flask. Plotly is truly excellent when you want to quickly make a dataset visually interactive. The curve is a steep one as you ask for more functionality, FYI.
 
-There are two apps in this repo. Each can be run simply by invoking the file in python (from within the virtual environment), like:
-
+There are three apps in this repo. Each can be run simply by invoking the file in python (from within the virtual environment), like:
+	
+	#for the complex app:
 	python app.py
-	python scatter.py
+	
+	#for the simple app:
+	python basic_application.py
+	
+	#for the minimally-interactive graph
+	python simple_graph.py
 
 ### What do the apps do?
 
