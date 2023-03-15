@@ -8,12 +8,18 @@ import numpy as np
 import pandas as pd
 import json
 import re
+import flask
 from vars import *
 
 ####### INTITIALIZE THE APP & LOAD THE DATA #######
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+server = flask.Flask(__name__)
+app = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
+app.config.suppress_callback_exceptions = True
+# 
+# app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+# server = app.server
 df=pd.read_csv('Excess_Mortality_Estimates.csv')
 
 ####### PRELIM FORMATTING AND FILTERING #######
@@ -278,4 +284,4 @@ def update_output(start_date,end_date,outcome):
 	return fig
 
 if __name__ == '__main__':
-	app.run_server(debug=False)
+    app.run_server(debug=True,host='0.0.0.0',port=8050)
