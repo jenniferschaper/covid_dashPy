@@ -21,9 +21,10 @@ The following frameworks and services are used:
 
 ## Running the applications in this repo
 
-These applications are single-page apps rendered in React on top of Flask. Plotly is truly excellent when you want to quickly make a dataset visually interactive. The curve is a steep one as you ask for more functionality, FYI.
+Theis application is a single-page app rendered in React on top of Flask. Plotly is truly excellent when you want to quickly make a dataset visually interactive. The curve is a steep one as you ask for more functionality, FYI.
 
-1. app.py: this application shows
+app.py: this application shows
+
 	1. for the weeks since January 1, 2020:
 	1. A multi-select geographic heatmap ("choropleth")
 		1. of the United States
