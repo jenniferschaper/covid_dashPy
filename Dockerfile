@@ -2,18 +2,18 @@ FROM python:3.9 as pybase
 
 USER root
 
-WORKDIR /app
+WORKDIR /application
 
-COPY requirements.txt /app
+COPY requirements.txt /application
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 from pybase as reqbase
 
-COPY . /app
+COPY . /application
 
 EXPOSE 80
 
 ENV NAME dashpy
 
-CMD ["python3","app.py"]
+CMD ["python3","application.py"]

@@ -15,11 +15,11 @@ from vars import *
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 server = flask.Flask(__name__)
-app = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
-app.config.suppress_callback_exceptions = True
+application = dash.Dash(__name__, server=server,external_stylesheets=external_stylesheets)
+application.config.suppress_callback_exceptions = True
 # 
-# app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-# server = app.server
+# application = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+# server = application.server
 df=pd.read_csv('Excess_Mortality_Estimates.csv')
 
 ####### PRELIM FORMATTING AND FILTERING #######
@@ -82,7 +82,7 @@ controls=dbc.Card(
 )
 
 ## Main app layout
-app.layout = dbc.Container(
+application.layout = dbc.Container(
 	[
 		dbc.Row(
 			[	
@@ -128,7 +128,7 @@ app.layout = dbc.Container(
 ## The radio buttons are used
 ## The map selections are used
 
-@app.callback(
+@application.callback(
     Output('graph', 'figure'),
     Output('para','children'),
 	Input('daterangepicker', 'start_date'),
@@ -225,7 +225,7 @@ def line_graph(start_date,end_date,selectedData,outcome):
 ## The date picker is used: selecting different date ranges
 # Both of the above behaviors change the heatmap
 ## Which shows percentage of weeks in that range that rise above 95% CI upper bound
-@app.callback(
+@application.callback(
 		Output('choropleth_map', 'figure'),
 		Input('daterangepicker', 'start_date'),
 		Input('daterangepicker', 'end_date'),
@@ -284,4 +284,4 @@ def update_output(start_date,end_date,outcome):
 	return fig
 
 if __name__ == '__main__':
-    app.run_server(debug=True,host='0.0.0.0',port=8050)
+    application.run_server(debug=True,host='0.0.0.0',port=8050)
