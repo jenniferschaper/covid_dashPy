@@ -11,10 +11,14 @@ The following frameworks and services are used:
 * Free, curated data from the CDC
 * Python
 * Pandas
-* Plotly (Dash)
-* Docker
+* Plotly/Dash (Flask + React)
+* Git
 
 ## Setup (Mac)
+
+
+gunicorn setup
+
 
 ### A. Install Docker Desktop
 
