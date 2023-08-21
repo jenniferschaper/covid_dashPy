@@ -12,7 +12,7 @@ from pybase as reqbase
 
 COPY . /application
 
-EXPOSE 80
+EXPOSE 8080
 
 ENV NAME dashpy
 

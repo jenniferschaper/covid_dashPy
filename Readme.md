@@ -1,6 +1,6 @@
 # Adaptation of CDC's All-Cause Excess Mortality Dashboard
 
-This repo uses CDC data on excess mortality (generated to estimate the impacts of COVID-19) as an exercise in quickly building and deploying interactive data visualizations to the web, because these are the cornerstone of exploratory data analysis.
+This repo uses CDC data on COVID-19-related excess mortality as an exercise in exploratory data analysis, critiquing and designing interactive data visualizations, and deploying these to the web.
 
 csv from: https://data.cdc.gov/api/views/xkkf-xrst/rows.csv?accessType=DOWNLOAD&bom=true&format=true%20target=
 
@@ -14,12 +14,20 @@ The following frameworks and services are used:
 * Plotly/Dash (Flask + React)
 * Git
 
-## Setup
+This lesson was developed for the Rice Center for Research Computing and the Start@Rice program.
+
+-------------------------
+
+## I. Pre-Class Installations
 
 ### A. Install Anaconda / Jupyter Notebooks
 
-	Download and install [Anaconda](http://continuum.io/downloads).
-	Use all of the defaults for installation except make sure to check Make Anaconda the default Python.
+Download and install Anaconda.
+
+* Windows: https://docs.anaconda.com/free/anaconda/install/windows/
+* Mac: https://docs.anaconda.com/free/anaconda/install/mac-os/
+
+Use all of the defaults for installation except make sure to check the box labeled "Make Anaconda the default Python."
 
 ### B. Install Git
 
@@ -34,7 +42,16 @@ Windows:
 
 * Download and run [the installer](https://gitforwindows.org/)
 
-### C. Set up git w/ GitHub
+### C. Install a basic text editor
+
+* Windows or Mac: Visual studio https://visualstudio.microsoft.com/
+* Mac only: Barebones software text editor https://www.barebones.com/products/bbedit/
+
+-------------------------
+
+## II. Sharing Code and Exploring Data
+
+### A. Git and GitHub
 
 Create a GitHub account and log in.
 
@@ -80,20 +97,61 @@ Now, go back to your terminal.
 
 You should now see the contents of this repository listed in your terminal.
 
-### D. Setting up your environment
+### B. Exploratory Data Analysis
 
-1. In your new repository folder, launch a virtual environment ```python -m venv venv```
+In Anaconda, launch Jupyter and open the ```excess_mortality_notebooks.ipynb``` notebook. We'll walk through the analysis there.
+
+A very helpful cheatsheet for Pandas is available in this repo's "Documentation" folder.
+
+------------------
+
+Now we have a functioning python environment and we have poked around at this interesting dataset. But we've also seen how this data could be sliced in thousands of different ways to answer interesting questions. In the second half of this course, we'll see how to make that slicing and dicing visually intuitive, to get us to some interesting answers much faster.
+
+_suggested 10 minute break_
+
+------------------
+
+III. Building and Deploying a data Visualization Application
+
+### A. Setting up your virtual environment
+
+1. In your repository folder, launch a virtual environment ```python -m venv venv```
 1. Activate that virtual environment
 	1. Windows ```. venv/Scripts/activate```
 	1. Mac ```source venv/bin/activate```
 1. Install your Python requirements ```pip3 install -r requirements.txt```
 1. Test that the app works ```python application.py```
 
+Alternatively, I've included a Dockerfile in this repo. If you have Docker installed, you can build and run this app with:
 
-## NEXT TO INCLUDE IN THIS LESSON PLAN
+	docker build . -t covidpy
+	docker run -p 0.0.0.0:8080:8080 covidpy
 
-1. The Notebooks portion so they can
-	1. poke at the data interactively and
-	1. learn about dataframes
-1. Installation of Visual Studio or BBEdit
-1. The Git push & PR section, and accompanying CI/CD lesson
+### B. Continuous Delivery
+
+Introduction to Continuous Delivery: https://www.atlassian.com/continuous-delivery/principles
+
+Today, we'll be working with AppRunner, a product built by Amazon Web Services, which integrates with GitHub to make continuous delivery very easy to use.
+
+![AWS AppRunner architecture](https://docs.aws.amazon.com/images/apprunner/latest/dg/images/architecture.png)
+
+I have configured my AWS account to connect to my GitHub account, and to check for updates to different branches of code. One thing to note, however, is that this pipeline currently looks for a file named ```application.py```. This is always the case with pipelines -- there are environment settings that you want to replicate locally -- but once you get this set up properly, it makes it very easy to rapidly iterate your app.
+
+### C. Updating the App and Deploying it
+
+Now we'll make the application your own and deploy it to the web. (more to come...)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
