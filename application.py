@@ -14,15 +14,11 @@ from vars import *
 ####### INTITIALIZE THE APP & LOAD THE DATA #######
 
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-# server = flask.Flask(__name__)
 app = dash.Dash(__name__,external_stylesheets=external_stylesheets)
 application=app.server
-# application=dash_app.server
 
 application.config.suppress_callback_exceptions = True
-# 
-# application = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
-# server = application.server
+
 df=pd.read_csv('Excess_Mortality_Estimates.csv')
 
 ####### PRELIM FORMATTING AND FILTERING #######
@@ -96,6 +92,11 @@ app.layout = dbc.Container(
 						style={"margin":"10px"}
 					)
 				),
+				dbc.Col(
+					html.H6(
+						"By John Mulligan"
+					)
+				)
 			],
 		),
 		dbc.Row(
