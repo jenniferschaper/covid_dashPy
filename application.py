@@ -94,7 +94,7 @@ app.layout = dbc.Container(
 				),
 				dbc.Col(
 					html.H6(
-						"By John Mulligan"
+						"By Jennifer Schaper"
 					)
 				)
 			],
