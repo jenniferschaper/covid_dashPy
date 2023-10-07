@@ -111,7 +111,7 @@ _suggested 10 minute break_
 
 ------------------
 
-III. Building and Deploying a data Visualization Application
+## III. Building and Deploying a data Visualization Application
 
 ### A. Setting up your virtual environment
 
